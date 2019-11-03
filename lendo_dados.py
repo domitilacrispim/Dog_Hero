@@ -1,5 +1,4 @@
 import csv
-import anfitriao
 import numpy as np
 from sklearn import svm, datasets
 with open('dados.csv') as csv_file:
@@ -48,6 +47,7 @@ with open('dog_hero.csv') as csv_file:
   prox=1000000
   proc=0
   for row in dados2:
+   prox=1000000
    it=it+1
    if col==0:
     anfitrioes.append([])
@@ -66,12 +66,20 @@ with open('dog_hero.csv') as csv_file:
       parcial[it]=parcial[it]+(sucesso[col][coli]/(sucesso[col][coli]+fracasso[col][coli]))
      elif proc==1:
       for i in mapeamento[col]:
-       if prox>abs(float(elemento)-float(i)):
-        prox=abs(float(elemento)-float(i))
-        coli=mapeamento[col].index(i)            
+       if proc==1:
+        try:
+         if prox>abs(float(elemento)-float(i)):
+          prox=abs(float(elemento)-float(i))
+          coli=mapeamento[col].index(i)
+        except:
+         coli=-1
+      if(coli!=-1):
+       parcial[it]=parcial[it]+(sucesso[col][coli]/(sucesso[col][coli]+fracasso[col][coli]))               
     else:
      anfitrioes[it].append(0)
    anfitrioes[it][4]=parcial[it]
+with open("saida.csv", "w", newline=''):
+ escrever=csv.writer(saida)
  for i in anfitrioes:
-  print (i[4])
+  escrever.writerow([i[4]])
 
