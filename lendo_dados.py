@@ -41,14 +41,18 @@ with open('dog_hero.csv') as csv_file:
  parcial=[]
  coluna=-1
  coli=0
+ ayx=-1
  for col in range (0,32):
   it=-1
+  ayx=ayx+1
   coluna=coluna+1
   prox=1000000
   proc=0
   for row in dados2:
    prox=1000000
    it=it+1
+   if col==4:
+    ayx=ayx-1
    if col==0:
     anfitrioes.append([])
     parcial.append(0)
@@ -61,25 +65,28 @@ with open('dog_hero.csv') as csv_file:
       anfitrioes[it].append(float(elemento))
      except:
       proc=0
-     if elemento in mapeamento[col]:
-      coli=mapeamento[col].index(elemento)
-      parcial[it]=parcial[it]+(sucesso[col][coli]/(sucesso[col][coli]+fracasso[col][coli]))
-     elif proc==1:
-      for i in mapeamento[col]:
-       if proc==1:
-        try:
-         if prox>abs(float(elemento)-float(i)):
-          prox=abs(float(elemento)-float(i))
-          coli=mapeamento[col].index(i)
-        except:
-         coli=-1
+     try:
+      if elemento in mapeamento[ayx]:
+       coli=mapeamento[col].index(elemento)
+       parcial[it]=parcial[it]+(sucesso[ayx][coli]/(sucesso[ayx][coli]+fracasso[ayx][coli]))
+      elif proc==1:
+       for i in mapeamento[ayx]:
+        if proc==1:
+         try:
+          if prox>abs(float(elemento)-float(i)):
+           prox=abs(float(elemento)-float(i))
+           coli=mapeamento[ayx].index(i)
+         except:
+          coli=-1
+     
       if(coli!=-1):
-       parcial[it]=parcial[it]+(sucesso[col][coli]/(sucesso[col][coli]+fracasso[col][coli]))               
+       parcial[it]=parcial[it]+(sucesso[ayx][coli]/(sucesso[ayx][coli]+fracasso[ayx][coli]))               
+     except: 
+      print(ayx)
     else:
      anfitrioes[it].append(0)
    anfitrioes[it][4]=parcial[it]
-with open("saida.csv", "w", newline=''):
- escrever=csv.writer(saida)
- for i in anfitrioes:
-  escrever.writerow([i[4]])
+c = csv.writer(open("saida.csv", "wb")) 
+for i in anfitrioes:
+  c.writerow(i)
 
