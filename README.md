@@ -8,7 +8,7 @@ Esse modelo parece bem promissor pois a base de dados disponibilizada tem alta r
 
 Antes dessa ideia foi testado a solução usando redes neurais, porém o tempo que ela gasta é muito alto devido a quantidade de dados então parece ser impraticável na vida real por conta das várias atualizações que a plataforma sofre e a necessidade de uma busca rápida e dinâmica. Inclusive o código toy dela está nesse mesmo repositório, inclusive rodando, porém por conta do tempo, não insisti nessa alternativa por medo de não dar resultados frutíferos.
 
-Infelizmente a estratégia proposta também não deu resultados frutíferos. Mas as próximas etapas depois de classificar os anfitriões pela avaliação proposta era ordenar todos eles por essa nota, em caso de empate desempatar com o maior valor que foi somado na nota.
+Infelizmente a estratégia proposta também não deu resultados frutíferos. Mas a próxima etapa depois de classificar os anfitriões pela avaliação proposta era ordenar todos eles por essa nota, em caso de empate desempatar com o maior valor que foi somado na nota.
 
 Estão disponibilizados o rascunho do código que é o lendo dados que demora cerca de 2 horas para executar em um computador i5 com 4 gb de RAM, ubuntu 16.04, python 3.
 
